@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1082
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SHFXRegularPolygon", "SHFXRegularPolygon.vcxproj", "{C863B0AA-DA5B-444F-9360-4D023C062D31}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A8EA7AB3-591D-4FCC-85BC-46778C39F85D} = {A8EA7AB3-591D-4FCC-85BC-46778C39F85D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "myImGuiDialog_win", "myImGuiDialog_win\myImGuiDialog_win.vcxproj", "{A8EA7AB3-591D-4FCC-85BC-46778C39F85D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C863B0AA-DA5B-444F-9360-4D023C062D31}.Debug|x64.ActiveCfg = Debug|x64
+		{C863B0AA-DA5B-444F-9360-4D023C062D31}.Debug|x64.Build.0 = Debug|x64
+		{C863B0AA-DA5B-444F-9360-4D023C062D31}.Release|x64.ActiveCfg = Release|x64
+		{C863B0AA-DA5B-444F-9360-4D023C062D31}.Release|x64.Build.0 = Release|x64
+		{A8EA7AB3-591D-4FCC-85BC-46778C39F85D}.Debug|x64.ActiveCfg = Debug|x64
+		{A8EA7AB3-591D-4FCC-85BC-46778C39F85D}.Debug|x64.Build.0 = Debug|x64
+		{A8EA7AB3-591D-4FCC-85BC-46778C39F85D}.Release|x64.ActiveCfg = Release|x64
+		{A8EA7AB3-591D-4FCC-85BC-46778C39F85D}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {46E1816D-F249-45A6-B568-840E0A6E4BC6}
+	EndGlobalSection
+EndGlobal

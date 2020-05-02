@@ -1,0 +1,36 @@
+#include <winver.h>
+#include "verinfo.h"
+
+VS_VERSION_INFO    VERSIONINFO 
+FILEVERSION        kMyVerinfoMajorVersion, kMyVerinfoMinorVersion, kMyVerinfoRevisionVersion, kMyVerinfoBuildNumber
+PRODUCTVERSION     kMyVerinfoMajorVersion, kMyVerinfoMinorVersion, kMyVerinfoRevisionVersion, kMyVerinfoBuildNumber
+FILEFLAGSMASK      VS_FFI_FILEFLAGSMASK 
+#ifdef _DEBUG
+ FILEFLAGS VS_FF_DEBUG
+#else
+ FILEFLAGS 0x0L
+#endif
+FILEOS             VOS__WINDOWS32
+ FILETYPE          VFT_DLL
+ FILESUBTYPE       VFT2_UNKNOWN
+BEGIN
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0409, 0x04E4
+    END
+
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4" // Lang=US English, CharSet=Windows Multilingual
+        BEGIN
+            VALUE "CompanyName",      kMyVerinfoCompanyName, "\0"
+            VALUE "FileDescription",  kMyVerinfoFileDescription, "\0"
+            VALUE "FileVersion",      kMyVerinfoFileVersionString, "\0"
+            VALUE "InternalName",     kMyVerinfoInternalName, "\0"
+            VALUE "LegalCopyright",   kMyVerinfoLegalCopyright, "\0"
+            VALUE "OriginalFilename", kMyVerinfoOriginalFilename, "\0"
+            VALUE "ProductName",      kMyVerinfoProductName, "\0"
+            VALUE "ProductVersion",   kMyVerinfoProductVersionString, "\0"
+        END 
+    END
+END

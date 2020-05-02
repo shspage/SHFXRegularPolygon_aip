@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\illustratorapi\illustrator\IAIUnicodeString.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\source\IllustratorSDK.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\source\Main.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\source\Plugin.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\source\Suites.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\source\SDKErrors.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\source\AppContext.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SHFXRegularPolygonPlugin.cpp" />
+    <ClCompile Include="Source\SHFXRegularPolygonSuites.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="shared">
+      <UniqueIdentifier>{b5e726e7-b713-4ff5-9c5f-13a3d64e4556}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources">
+      <UniqueIdentifier>{b22fd5ee-b508-4524-b85e-70d96dc7a1b6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\SHFXRegularPolygonSuites.h" />
+    <ClInclude Include="Source\myImGuiDialog.h" />
+    <ClInclude Include="Source\MyParms.h" />
+    <ClInclude Include="Source\SHFXRegularPolygonID.h" />
+    <ClInclude Include="Source\SHFXRegularPolygonPlugin.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources\Win\SHFXRegularPolygon.rc">
+      <Filter>resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
