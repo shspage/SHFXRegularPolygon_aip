@@ -4,7 +4,7 @@
 ReadMe.txt
 #*.vcxproj
 #*.vcxproj.filters
-*.vcxproj.user
+#*.vcxproj.user
 
 # IllustratorSDK ----
 plugin.pipl
