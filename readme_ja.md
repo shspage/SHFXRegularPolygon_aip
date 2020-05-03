@@ -1,7 +1,5 @@
 # SHFXRegularPolygon.aip
 
-[readme in japanese](https://github.com/shspage/SHFXRegularPolygon_aip/blob/master/readme_ja.md)
-
 __SHFXRegularPolygon.aip__ は、Adobe Illustrator  2020 (mac/win) プラグインです。
 
 選択したパスを正多角形に変換する効果（エフェクト）を追加します。
