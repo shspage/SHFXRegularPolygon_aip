@@ -62,6 +62,7 @@ __SHFXRegularPolygon.aip__ をAdobe Illustrator のプラグインフォルダ�
 
 オブジェクトを選択したうえで、サブメニューの「Regular Polygon -SHFX」を選択すると効果の設定ウィンドウが表示されます。
 
+補足: "StayHomeFX" は仮の名称で、しかるべき時期に別のものに変更します。SHFXという略称はそのままです。
 
 ## ライセンス
 

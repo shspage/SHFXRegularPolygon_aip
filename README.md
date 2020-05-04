@@ -66,6 +66,7 @@ The next time Illustrator runs, the plugin will be loaded and "StayHomeFX" will 
 
 After selecting a path, select "Regular Polygon -SHFX" from the submenu to show the effect setting window.
 
+Note: "StayHomeFX" is a temporary name, and will be changed to another one at a later date. The abbreviation SHFX remains the same.
 
 ## License
 
