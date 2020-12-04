@@ -334,7 +334,7 @@
 				PROJECTNAME = SHFX_RegularPolygon;
 				REZ_SEARCH_PATHS = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
-				SDKROOT = macosx10.13;
+				SDKROOT = macosx;
 				SEPARATE_STRIP = NO;
 				SHARED_PRECOMPS_DIR = "./../output/mac/sharedprecompiledheaders/$(AI_CONFIGURATION)";
 				SKIP_INSTALL = NO;
@@ -397,7 +397,7 @@
 				PROJECTNAME = SHFX_RegularPolygon;
 				REZ_SEARCH_PATHS = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
-				SDKROOT = macosx10.13;
+				SDKROOT = macosx;
 				SEPARATE_STRIP = NO;
 				SHARED_PRECOMPS_DIR = "./../output/mac/sharedprecompiledheaders/$(AI_CONFIGURATION)";
 				SKIP_INSTALL = NO;
@@ -431,7 +431,7 @@
 				);
 				PRODUCT_NAME = SHFXRegularPolygon;
 				PROJECTNAME = SHFXRegularPolygon;
-				SDKROOT = macosx10.13;
+				SDKROOT = macosx;
 				STRIP_STYLE = "non-global";
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				VERSION_STRING = 1.1.0.0;
@@ -459,7 +459,7 @@
 				);
 				PRODUCT_NAME = SHFXRegularPolygon;
 				PROJECTNAME = SHFXRegularPolygon;
-				SDKROOT = macosx10.13;
+				SDKROOT = macosx;
 				STRIP_STYLE = "non-global";
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				VERSION_STRING = 1.1.0.0;

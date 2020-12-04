@@ -17,6 +17,7 @@ plugin.pipl
 *.build/
 XCBuildData/
 xcuserdata/
+build/
 
 # windows ----
 Thumbs.db
