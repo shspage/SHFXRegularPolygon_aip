@@ -149,6 +149,7 @@
 
 -(void)reshape
 {
+    [super reshape];
     [[self openGLContext] update];
     [self updateAndDrawView];
 }

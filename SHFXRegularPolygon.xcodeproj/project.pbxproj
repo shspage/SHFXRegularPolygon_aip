@@ -425,6 +425,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib/mac/$(AI_CONFIGURATION)",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-L./lib/mac/$(AI_CONFIGURATION)",
 					"-lmyImGuiDialog",
@@ -453,6 +454,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib/mac/$(AI_CONFIGURATION)",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-L./lib/mac/$(AI_CONFIGURATION)",
 					"-lmyImGuiDialog",
