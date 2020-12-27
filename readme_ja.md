@@ -31,7 +31,7 @@ Windows10 (win版)
 ## 開発環境
 
 Adobe Illustrator 2021 SDK  
-Xcode 12.2 / macOS 11.0 sdk / MacOS Big Sur
+Xcode 12.3 / macOS 11.0 sdk / MacOS Big Sur
 
 <!-- Visual Studio 2017 / Windows10 -->
 
