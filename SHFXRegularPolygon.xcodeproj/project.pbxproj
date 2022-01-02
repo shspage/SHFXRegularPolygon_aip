@@ -349,7 +349,7 @@
 				INFOPLIST_PREFIX_HEADER = ../common/includes/SDKDef.h;
 				INFOPLIST_PREPROCESS = YES;
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OBJROOT = .;
 				ONLY_LINK_ESSENTIAL_SYMBOLS = YES;
 				OTHER_LDFLAGS = "";
@@ -366,7 +366,7 @@
 				STRIP_INSTALLED_PRODUCT = YES;
 				STRIP_STYLE = "non-global";
 				SYMROOT = "./../output/mac/$(AI_CONFIGURATION)";
-				VALID_ARCHS = "i386 x86_64";
+				VALID_ARCHS = arm64;
 				WRAPPER_EXTENSION = aip;
 				ZERO_LINK = NO;
 			};
@@ -436,7 +436,7 @@
 				INFOPLIST_PREFIX_HEADER = ../common/includes/SDKDef.h;
 				INFOPLIST_PREPROCESS = YES;
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OBJROOT = .;
 				ONLY_LINK_ESSENTIAL_SYMBOLS = YES;
 				OTHER_LDFLAGS = "";
@@ -453,7 +453,7 @@
 				STRIP_INSTALLED_PRODUCT = YES;
 				STRIP_STYLE = "non-global";
 				SYMROOT = "./../output/mac/$(AI_CONFIGURATION)";
-				VALID_ARCHS = "i386 x86_64";
+				VALID_ARCHS = arm64;
 				WRAPPER_EXTENSION = aip;
 				ZERO_LINK = NO;
 			};
@@ -479,6 +479,7 @@
 					"-L./lib/mac/$(AI_CONFIGURATION)",
 					"-lmyImGuiDialog",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adobe.illustrator.plugins.SHFXRegularPolygon;
 				PRODUCT_NAME = SHFXRegularPolygon;
 				PROJECTNAME = SHFXRegularPolygon;
 				SDKROOT = macosx;
@@ -508,6 +509,7 @@
 					"-L./lib/mac/$(AI_CONFIGURATION)",
 					"-lmyImGuiDialog",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adobe.illustrator.plugins.SHFXRegularPolygon;
 				PRODUCT_NAME = SHFXRegularPolygon;
 				PROJECTNAME = SHFXRegularPolygon;
 				SDKROOT = macosx;

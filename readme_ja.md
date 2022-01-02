@@ -1,10 +1,13 @@
 # SHFXRegularPolygon.aip
 
-__SHFXRegularPolygon.aip__ は、Adobe Illustrator  2020-2021 (mac/win) プラグインです。
+__SHFXRegularPolygon.aip__ は、Adobe Illustrator  2020-2022 (mac/win) プラグインです。
 
 選択したパスを正多角形に変換する効果（エフェクト）を追加します。
 
 機能としては単純ですが、[Dear ImGui](https://github.com/ocornut/imgui) で LiveEffectプラグインの設定ダイアログを作成する例として公開しています。
+
+このブランチ（xcode12_ai2022_arm64）は macOS (Apple Silicon) 用です。  
+windows版の関連ファイルは master ブランチから変更していません。
 
 ## 使い方
 
@@ -23,15 +26,16 @@ https://twitter.com/shspage/status/1256437710778036224
 
 ## 動作環境：
 
-Adobe Illustrator 2020-2021 (mac/win)
+Adobe Illustrator 2022 (macOS (Apple Silicon))
 
-Windows10 (win版)
+<!-- Windows10 (win版) -->
 
 
 ## 開発環境
 
 Adobe Illustrator 2021 SDK  
-Xcode 12.3 / macOS 11.0 sdk / MacOS Big Sur
+Xcode 12.3 / macOS 11.0 sdk / MacOS Big Sur  
+MacBook Air (M1)
 
 <!-- Visual Studio 2017 / Windows10 -->
 

@@ -2,11 +2,14 @@
 
 [readme in japanese](https://github.com/shspage/SHFXRegularPolygon_aip/blob/master/readme_ja.md)
 
-__SHFXRegularPolygon.aip__  is a plug-in for Adobe Illustrator 2020-2021 (mac/win).
+__SHFXRegularPolygon.aip__  is a plug-in for Adobe Illustrator 2020-2022 (mac/win).
 
 Adds an effect that converts the selected path to a regular polygon.
 
 The function is rather simple, actually this repo is an example of creating a LiveEffect plugin configuration dialog with [Dear ImGui](https://github.com/ocornut/imgui) .
+
+This branch (xcode12_ai2022_arm64) is for macOS (Apple Silicon).  
+The related files for windows version have not been changed from the master branch.
 
 ## How To Use
 
@@ -25,15 +28,16 @@ https://twitter.com/shspage/status/1256437710778036224
 
 ## Working Environment
 
-Adobe Illustrator 2020-2021 (mac/win)
+Adobe Illustrator 2022 (macOS (Apple Silicon))
 
-Windows10 (win version)
+<!-- Windows10 (win version) -->
 
 
 ## Development Environment
 
-Adobe Illustrator 2021 SDK  
-Xcode 12.3 / macOS 11.0 sdk / MacOS Big Sur
+Adobe Illustrator 2022 SDK  
+Xcode 12.3 / macOS 11.0 sdk / MacOS Big Sur  
+MacBook Air (M1)
 
 <!-- Visual Studio 2017 / Windows10 -->
 
