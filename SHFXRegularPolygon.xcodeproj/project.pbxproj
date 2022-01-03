@@ -366,7 +366,6 @@
 				STRIP_INSTALLED_PRODUCT = YES;
 				STRIP_STYLE = "non-global";
 				SYMROOT = "./../output/mac/$(AI_CONFIGURATION)";
-				VALID_ARCHS = arm64;
 				WRAPPER_EXTENSION = aip;
 				ZERO_LINK = NO;
 			};
@@ -453,7 +452,6 @@
 				STRIP_INSTALLED_PRODUCT = YES;
 				STRIP_STYLE = "non-global";
 				SYMROOT = "./../output/mac/$(AI_CONFIGURATION)";
-				VALID_ARCHS = arm64;
 				WRAPPER_EXTENSION = aip;
 				ZERO_LINK = NO;
 			};
