@@ -8,7 +8,7 @@ __SHFXRegularPolygon.aip__ は、Adobe Illustrator  2020 (mac/win) プラグイ�
 
 ## 使い方
 
-![image](https://gist.github.com/shspage/cfa3496f862b21c27b7a1157690d335a/raw/59e143430b4b1db5a78fe51b478e8c9a000c1836/effect.jpg)  
+![image](https://gist.githubusercontent.com/shspage/cfa3496f862b21c27b7a1157690d335a/raw/59e143430b4b1db5a78fe51b478e8c9a000c1836/effect.jpg)  
 動画 - 
 https://twitter.com/shspage/status/1256437710778036224
 
