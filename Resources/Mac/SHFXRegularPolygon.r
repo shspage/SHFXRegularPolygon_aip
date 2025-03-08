@@ -37,6 +37,5 @@
  */
 
 
-#include "SHFXRegularPolygonID.h"
 
 #include <Carbon/Carbon.r>

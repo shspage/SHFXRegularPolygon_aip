@@ -33,6 +33,9 @@
 		2E2BB5D2245BB75500F77D77 /* MyWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E2BB5D0245BB75500F77D77 /* MyWindowController.h */; };
 		2E2BB5D3245BB75500F77D77 /* MyWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2E2BB5D1245BB75500F77D77 /* MyWindowController.mm */; };
 		2E2BB5D4245BB75500F77D77 /* MyWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2E2BB5D1245BB75500F77D77 /* MyWindowController.mm */; };
+		2E72775C2D7CEF3C00FAFAE6 /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E72775B2D7CEF3C00FAFAE6 /* GameController.framework */; };
+		2E72775E2D7CEFB000FAFAE6 /* imgui_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E72775D2D7CEFB000FAFAE6 /* imgui_tables.cpp */; };
+		2E72775F2D7CEFB000FAFAE6 /* imgui_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E72775D2D7CEFB000FAFAE6 /* imgui_tables.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +72,8 @@
 		2E2BB5C4245B992400F77D77 /* imgui_impl_osx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_osx.h; path = ../imgui/examples/imgui_impl_osx.h; sourceTree = "<group>"; };
 		2E2BB5D0245BB75500F77D77 /* MyWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWindowController.h; sourceTree = "<group>"; };
 		2E2BB5D1245BB75500F77D77 /* MyWindowController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyWindowController.mm; sourceTree = "<group>"; };
+		2E72775B2D7CEF3C00FAFAE6 /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
+		2E72775D2D7CEFB000FAFAE6 /* imgui_tables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imgui_tables.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E72775C2D7CEF3C00FAFAE6 /* GameController.framework in Frameworks */,
 				2E2BB577245B734E00F77D77 /* Cocoa.framework in Frameworks */,
 				2E2BB575245B734800F77D77 /* OpenGL.framework in Frameworks */,
 			);
@@ -134,6 +140,7 @@
 				2E2BB527245B64AB00F77D77 /* imgui_internal.h */,
 				2E2BB522245B64AB00F77D77 /* imgui_widgets.cpp */,
 				2E2BB52C245B64AB00F77D77 /* imgui_draw.cpp */,
+				2E72775D2D7CEFB000FAFAE6 /* imgui_tables.cpp */,
 			);
 			name = imgui;
 			path = ../imgui;
@@ -142,6 +149,7 @@
 		2E2BB573245B734800F77D77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E72775B2D7CEF3C00FAFAE6 /* GameController.framework */,
 				2E2BB576245B734E00F77D77 /* Cocoa.framework */,
 				2E2BB574245B734800F77D77 /* OpenGL.framework */,
 			);
@@ -283,6 +291,7 @@
 				2E2BB535245B64AB00F77D77 /* imgui.cpp in Sources */,
 				2E2BB531245B64AB00F77D77 /* imgui_widgets.cpp in Sources */,
 				2E2BB5C5245B992400F77D77 /* imgui_impl_opengl2.cpp in Sources */,
+				2E72775E2D7CEFB000FAFAE6 /* imgui_tables.cpp in Sources */,
 				2E2BB5D3245BB75500F77D77 /* MyWindowController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,6 +304,7 @@
 				2E2BB56D245B72EE00F77D77 /* myImGuiDialog.mm in Sources */,
 				2E2BB5D4245BB75500F77D77 /* MyWindowController.mm in Sources */,
 				2E2BB570245B730700F77D77 /* imgui_widgets.cpp in Sources */,
+				2E72775F2D7CEFB000FAFAE6 /* imgui_tables.cpp in Sources */,
 				2E2BB5C6245B992400F77D77 /* imgui_impl_opengl2.cpp in Sources */,
 				2E2BB571245B730900F77D77 /* imgui_draw.cpp in Sources */,
 				2E2BB5C9245B992400F77D77 /* imgui_impl_osx.mm in Sources */,
@@ -356,11 +366,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.13;
+				SDKROOT = macosx;
 				SYSTEM_HEADER_SEARCH_PATHS = ../imgui/libs/examples/gl3w;
 			};
 			name = Debug;
@@ -411,11 +421,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.13;
+				SDKROOT = macosx;
 				SYSTEM_HEADER_SEARCH_PATHS = ../imgui/libs/examples/gl3w;
 			};
 			name = Release;
@@ -428,7 +438,9 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SYMROOT = build;
 				SYSTEM_HEADER_SEARCH_PATHS = ../imgui/libs/examples/gl3w;
@@ -444,8 +456,10 @@
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SYMROOT = build;
 				SYSTEM_HEADER_SEARCH_PATHS = ../imgui/libs/examples/gl3w;
@@ -462,9 +476,9 @@
 					"$(inherited)",
 					"IS_STANDALONE=1",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.13;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -474,9 +488,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DCSLBKYL57;
 				GCC_PREPROCESSOR_DEFINITIONS = "IS_STANDALONE=1";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.13;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

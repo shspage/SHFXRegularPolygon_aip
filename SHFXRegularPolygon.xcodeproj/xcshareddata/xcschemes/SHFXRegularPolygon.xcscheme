@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1010"
+   LastUpgradeVersion = "1230"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -29,8 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "debug"
@@ -44,8 +42,7 @@
       allowLocationSimulation = "YES">
       <PathRunnable
          runnableDebuggingMode = "0"
-         BundleIdentifier = "com.adobe.illustrator"
-         FilePath = "/Applications/Adobe Illustrator 2020/Adobe Illustrator.app">
+         FilePath = "/Applications/Adobe Illustrator 2025/Adobe Illustrator.app">
       </PathRunnable>
       <MacroExpansion>
          <BuildableReference
@@ -56,8 +53,6 @@
             ReferencedContainer = "container:SHFXRegularPolygon.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "debug"

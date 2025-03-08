@@ -19,6 +19,7 @@
 		2E2EFBFB24490425007C41DF /* SDKErrors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E2EFBFA24490425007C41DF /* SDKErrors.cpp */; };
 		2ED05922244D0A9200DBC697 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED05921244D0A9200DBC697 /* Cocoa.framework */; };
 		2ED05924244D0A9800DBC697 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED05923244D0A9800DBC697 /* OpenGL.framework */; };
+		2ED99A772D7C79E700F277EA /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED99A762D7C79E700F277EA /* GameController.framework */; };
 		6868C925150BA192003DAAF2 /* SHFXRegularPolygonID.h in Headers */ = {isa = PBXBuildFile; fileRef = 6868C920150BA192003DAAF2 /* SHFXRegularPolygonID.h */; };
 		6868C926150BA192003DAAF2 /* SHFXRegularPolygonPlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6868C921150BA192003DAAF2 /* SHFXRegularPolygonPlugin.cpp */; };
 		6868C927150BA192003DAAF2 /* SHFXRegularPolygonPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 6868C922150BA192003DAAF2 /* SHFXRegularPolygonPlugin.h */; };
@@ -41,6 +42,7 @@
 		2E2EFBFA24490425007C41DF /* SDKErrors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SDKErrors.cpp; path = ../common/source/SDKErrors.cpp; sourceTree = "<group>"; };
 		2ED05921244D0A9200DBC697 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2ED05923244D0A9800DBC697 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		2ED99A762D7C79E700F277EA /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
 		6868C920150BA192003DAAF2 /* SHFXRegularPolygonID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHFXRegularPolygonID.h; path = Source/SHFXRegularPolygonID.h; sourceTree = "<group>"; };
 		6868C921150BA192003DAAF2 /* SHFXRegularPolygonPlugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SHFXRegularPolygonPlugin.cpp; path = Source/SHFXRegularPolygonPlugin.cpp; sourceTree = "<group>"; };
 		6868C922150BA192003DAAF2 /* SHFXRegularPolygonPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHFXRegularPolygonPlugin.h; path = Source/SHFXRegularPolygonPlugin.h; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ED99A772D7C79E700F277EA /* GameController.framework in Frameworks */,
 				2ED05924244D0A9800DBC697 /* OpenGL.framework in Frameworks */,
 				2ED05922244D0A9200DBC697 /* Cocoa.framework in Frameworks */,
 				DAA52DCD15CA7E5F00AC7CA4 /* CoreFoundation.framework in Frameworks */,
@@ -97,6 +100,7 @@
 		2E89E0BE244BA6C10001C61D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2ED99A762D7C79E700F277EA /* GameController.framework */,
 				2ED05923244D0A9800DBC697 /* OpenGL.framework */,
 				2ED05921244D0A9200DBC697 /* Cocoa.framework */,
 			);
@@ -184,6 +188,7 @@
 		508817C409F0C9740071BF1A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 1230;
 			};
 			buildConfigurationList = 508817C509F0C9740071BF1A /* Build configuration list for PBXProject "SHFXRegularPolygon" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -243,7 +248,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "python ../../tools/pipl/create_pipl.py -input '[{\"name\":\"SHFXRegularPolygon\"}]' \n";
+			shellScript = "python3 ../../tools/pipl/create_pipl.py -input '[{\"name\":\"SHFXRegularPolygon\"}]' \n";
 		};
 		2E1FD08223C9F7BF0064731F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -291,26 +296,51 @@
 				AI_LOCALE = en_US;
 				AI_PLATFORM = xcode;
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CONFIGURATION_BUILD_DIR = "./../output/mac/$(AI_CONFIGURATION)";
 				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/Default";
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DSTROOT = "/tmp/$(PROJECT_NAME).dst";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXPORTED_SYMBOLS_FILE = "";
 				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)";
 				GCC_DEBUGGING_SYMBOLS = used;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.cpp;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "./../common/includes/IllustratorSDK$(AI_CONFIGURATION).pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -323,25 +353,23 @@
 				INFOPLIST_PREFIX_HEADER = ../common/includes/SDKDef.h;
 				INFOPLIST_PREPROCESS = YES;
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OBJROOT = .;
 				ONLY_LINK_ESSENTIAL_SYMBOLS = YES;
 				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = NO;
 				PRODUCT_NAME = SHFX_RegularPolygon;
 				PROJECTNAME = SHFX_RegularPolygon;
 				REZ_SEARCH_PATHS = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
-				SDKROOT = macosx10.13;
+				SDKROOT = macosx;
 				SEPARATE_STRIP = NO;
 				SHARED_PRECOMPS_DIR = "./../output/mac/sharedprecompiledheaders/$(AI_CONFIGURATION)";
 				SKIP_INSTALL = NO;
 				STRIP_INSTALLED_PRODUCT = YES;
 				STRIP_STYLE = "non-global";
 				SYMROOT = "./../output/mac/$(AI_CONFIGURATION)";
-				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = aip;
 				ZERO_LINK = NO;
 			};
@@ -354,26 +382,51 @@
 				AI_LOCALE = en_US;
 				AI_PLATFORM = xcode;
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CONFIGURATION_BUILD_DIR = "./../output/mac/$(AI_CONFIGURATION)";
 				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/Default";
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DSTROOT = "/tmp/$(PROJECT_NAME).dst";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXPORTED_SYMBOLS_FILE = "";
 				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)";
 				GCC_DEBUGGING_SYMBOLS = used;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.cpp;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "./../common/includes/IllustratorSDK$(AI_CONFIGURATION).pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -386,25 +439,23 @@
 				INFOPLIST_PREFIX_HEADER = ../common/includes/SDKDef.h;
 				INFOPLIST_PREPROCESS = YES;
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OBJROOT = .;
 				ONLY_LINK_ESSENTIAL_SYMBOLS = YES;
 				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = NO;
 				PRODUCT_NAME = SHFX_RegularPolygon;
 				PROJECTNAME = SHFX_RegularPolygon;
 				REZ_SEARCH_PATHS = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
-				SDKROOT = macosx10.13;
+				SDKROOT = macosx;
 				SEPARATE_STRIP = NO;
 				SHARED_PRECOMPS_DIR = "./../output/mac/sharedprecompiledheaders/$(AI_CONFIGURATION)";
 				SKIP_INSTALL = NO;
 				STRIP_INSTALLED_PRODUCT = YES;
 				STRIP_STYLE = "non-global";
 				SYMROOT = "./../output/mac/$(AI_CONFIGURATION)";
-				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = aip;
 				ZERO_LINK = NO;
 			};
@@ -413,7 +464,7 @@
 		508817D809F0C9AE0071BF1A /* debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COPYRIGHT_STRING = "Copyright 2020 Hiroyuki Sato. All rights reserved.";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -425,13 +476,16 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib/mac/$(AI_CONFIGURATION)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-L./lib/mac/$(AI_CONFIGURATION)",
 					"-lmyImGuiDialog",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adobe.illustrator.plugins.SHFXRegularPolygon;
 				PRODUCT_NAME = SHFXRegularPolygon;
 				PROJECTNAME = SHFXRegularPolygon;
-				SDKROOT = macosx10.13;
+				SDKROOT = macosx;
 				STRIP_STYLE = "non-global";
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				VERSION_STRING = 1.1.0.0;
@@ -441,7 +495,7 @@
 		508817D909F0C9AE0071BF1A /* release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COPYRIGHT_STRING = "Copyright 2020 Hiroyuki Sato. All rights reserved.";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -453,13 +507,16 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib/mac/$(AI_CONFIGURATION)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-L./lib/mac/$(AI_CONFIGURATION)",
 					"-lmyImGuiDialog",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adobe.illustrator.plugins.SHFXRegularPolygon;
 				PRODUCT_NAME = SHFXRegularPolygon;
 				PROJECTNAME = SHFXRegularPolygon;
-				SDKROOT = macosx10.13;
+				SDKROOT = macosx;
 				STRIP_STYLE = "non-global";
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				VERSION_STRING = 1.1.0.0;

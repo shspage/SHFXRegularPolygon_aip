@@ -2,11 +2,14 @@
 
 [readme in japanese](https://github.com/shspage/SHFXRegularPolygon_aip/blob/master/readme_ja.md)
 
-__SHFXRegularPolygon.aip__  is a plug-in for Adobe Illustrator 2020 (mac/win).
+__SHFXRegularPolygon.aip__  is a plug-in for Adobe Illustrator 2025 (mac/win).
 
 Adds an effect that converts the selected path to a regular polygon.
 
 The function is rather simple, actually this repo is an example of creating a LiveEffect plugin configuration dialog with [Dear ImGui](https://github.com/ocornut/imgui) .
+
+This branch (xcode12_ai2022_arm64) is for macOS (Apple Silicon).  
+The related files for windows version have not been changed from the master branch.
 
 ## How To Use
 
@@ -25,17 +28,18 @@ https://twitter.com/shspage/status/1256437710778036224
 
 ## Working Environment
 
-Adobe Illustrator 2020 (mac/win)
+Adobe Illustrator 2025 (macOS (Apple Silicon))
 
-Windows10 (win version)
+<!-- Windows10 (win version) -->
 
 
 ## Development Environment
 
-Adobe Illustrator 2020 SDK  
-Xcode 10.1 / macOS 10.13 sdk / MacOS High Sierra
+Adobe Illustrator 2025 SDK  
+Xcode 14.2 / macOS 13.1 sdk / MacOS Ventura  
+MacBook Air (M1)
 
-Visual Studio 2017 / Windows10
+<!-- Visual Studio 2017 / Windows10 -->
 
 
 ## Build
@@ -55,6 +59,7 @@ Projects will be built in the order of _myImGuiDailog_win_ and _SHFXRegularPolyg
 
 * Place "SHFXRegularPolygon_aip" folder directly under Illustrator SDK's samplecode folder.
 * (Windows) To build with the attached project file, it is necessary to convert the character code of the source code (.cpp, .h, .hpp) from UTF-8 to Multibyte(cp932).
+* The python names and paths in Build Phases/Run Script(mac) and Build Events(win) are from my environment, so please change them accordingly. (Starting with Illustrator SDK 2025, the version of python used in the build is 3.11.)
 
 
 ## Installation
@@ -77,11 +82,11 @@ See LICENSE.txt for details.
 
 This software depends on the following resources which may have the licenses differs from this software.
 
-* Dear ImGui : Copyright (c) 2014-2020 Omar Cornut  
+* Dear ImGui : Copyright (c) 2014-2025 Omar Cornut  
 Licensed under the MIT License  
 https://github.com/ocornut/imgui
 
-* Adobe Illustrator 2020 SDK  
-Copyright (c) 2020 Adobe. All rights reserved.  
+* Adobe Illustrator 2025 SDK  
+Copyright (c) 2024 Adobe. All rights reserved.  
 https://www.adobe.io/
 

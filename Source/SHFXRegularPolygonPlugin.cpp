@@ -84,6 +84,7 @@ ASErr SHFXRegularPolygonPlugin::AddLiveEffect(SPInterfaceMessage * message) {
     char menuTitle[128];
     ai::UnicodeString(kSHFXRegularPolygonEffectCategoryTitle, kAIUTF8CharacterEncoding).as_Platform(menuTitle, 128);
     emdata.title = menuTitle;  // メニュー項目の、ローカライズ可能な表示名称
+    emdata.options = 0;
 
     error = sAILiveEffect->AddLiveEffect(&efdata, &fLiveEffect);
     error = sAILiveEffect->AddLiveEffectMenuItem(fLiveEffect,

@@ -163,15 +163,6 @@
 -(BOOL)resignFirstResponder  { return (YES); }
 
 // Forward Mouse/Keyboard events to dear imgui OSX back-end. It returns true when imgui is expecting to use the event.
--(void)keyUp:(NSEvent *)event           { ImGui_ImplOSX_HandleEvent(event, self); }
--(void)keyDown:(NSEvent *)event         { ImGui_ImplOSX_HandleEvent(event, self); }
--(void)flagsChanged:(NSEvent *)event    { ImGui_ImplOSX_HandleEvent(event, self); }
--(void)mouseDown:(NSEvent *)event       { ImGui_ImplOSX_HandleEvent(event, self); }
--(void)mouseUp:(NSEvent *)event         { ImGui_ImplOSX_HandleEvent(event, self); }
--(void)mouseMoved:(NSEvent *)event      { ImGui_ImplOSX_HandleEvent(event, self); }
--(void)mouseDragged:(NSEvent *)event    { ImGui_ImplOSX_HandleEvent(event, self); }
--(void)scrollWheel:(NSEvent *)event     { ImGui_ImplOSX_HandleEvent(event, self); }
-
 @end
 
 //-----------------------------------------------------------------------------------
@@ -224,7 +215,7 @@
     style->Colors[ImGuiCol_FrameBg] = ImVec4(0.5f, 0.5f, 0.5f, 0.5f);
 
     // Setup Platform/Renderer bindings
-    ImGui_ImplOSX_Init();
+    ImGui_ImplOSX_Init(imguiview);
     ImGui_ImplOpenGL2_Init();
     
     // Load Fonts
