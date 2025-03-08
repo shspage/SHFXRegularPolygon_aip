@@ -1,6 +1,6 @@
 # SHFXRegularPolygon.aip
 
-__SHFXRegularPolygon.aip__ は、Adobe Illustrator  2020-2022 (mac/win) プラグインです。
+__SHFXRegularPolygon.aip__ は、Adobe Illustrator  2025 (mac/win) プラグインです。
 
 選択したパスを正多角形に変換する効果（エフェクト）を追加します。
 
@@ -33,8 +33,8 @@ Adobe Illustrator 2022 (macOS (Apple Silicon))
 
 ## 開発環境
 
-Adobe Illustrator 2021 SDK  
-Xcode 12.3 / macOS 11.0 sdk / MacOS Big Sur  
+Adobe Illustrator 2025 SDK  
+Xcode 14.2 / macOS 13.1 sdk / MacOS Ventura  
 MacBook Air (M1)
 
 <!-- Visual Studio 2017 / Windows10 -->
@@ -56,6 +56,8 @@ SHFXRegularPolygon.sln でソリューションのビルドを実行してくだ
 <!-- ソースコードは https://github.com/shspage/SHFXRegularPolygon_aip にあります。ビルドする際は以下をご一読ください。-->
 * SHFXRegularPolygon_aip フォルダはIllustrator SDKのsamplecodeフォルダの直下に置いてください。
 * (Windows) 添付のプロジェクトファイルでビルドするには、ソースコード(.cpp, .h, .hpp)の文字コードをUTF-8からMultibyte(cp932)に変換する必要があります。
+* Build Phases/Run Script(mac), ビルドイベント(win) のpythonの名称やパスは私の環境でのものなので適宜変更してください。
+（Illustrator SDK 2025から、ビルドで使用するpythonのバージョンが3.11になりました。）
 
 ## インストール
 
@@ -78,12 +80,12 @@ https://github.com/shspage
 
 以下については、それぞれのライセンスを参照ください。
 
-* Dear ImGui : Copyright (c) 2014-2020 Omar Cornut  
+* Dear ImGui : Copyright (c) 2014-2025 Omar Cornut  
 Licensed under the MIT License  
 https://github.com/ocornut/imgui
 
-* Adobe Illustrator 2020 SDK  
-Copyright (c) 2020 Adobe. All rights reserved.  
+* Adobe Illustrator 2025 SDK  
+Copyright (c) 2024 Adobe. All rights reserved.  
 https://www.adobe.io/
 
 

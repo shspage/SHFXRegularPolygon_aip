@@ -19,6 +19,7 @@
 		2E2EFBFB24490425007C41DF /* SDKErrors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E2EFBFA24490425007C41DF /* SDKErrors.cpp */; };
 		2ED05922244D0A9200DBC697 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED05921244D0A9200DBC697 /* Cocoa.framework */; };
 		2ED05924244D0A9800DBC697 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED05923244D0A9800DBC697 /* OpenGL.framework */; };
+		2ED99A772D7C79E700F277EA /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED99A762D7C79E700F277EA /* GameController.framework */; };
 		6868C925150BA192003DAAF2 /* SHFXRegularPolygonID.h in Headers */ = {isa = PBXBuildFile; fileRef = 6868C920150BA192003DAAF2 /* SHFXRegularPolygonID.h */; };
 		6868C926150BA192003DAAF2 /* SHFXRegularPolygonPlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6868C921150BA192003DAAF2 /* SHFXRegularPolygonPlugin.cpp */; };
 		6868C927150BA192003DAAF2 /* SHFXRegularPolygonPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 6868C922150BA192003DAAF2 /* SHFXRegularPolygonPlugin.h */; };
@@ -41,6 +42,7 @@
 		2E2EFBFA24490425007C41DF /* SDKErrors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SDKErrors.cpp; path = ../common/source/SDKErrors.cpp; sourceTree = "<group>"; };
 		2ED05921244D0A9200DBC697 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2ED05923244D0A9800DBC697 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		2ED99A762D7C79E700F277EA /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
 		6868C920150BA192003DAAF2 /* SHFXRegularPolygonID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHFXRegularPolygonID.h; path = Source/SHFXRegularPolygonID.h; sourceTree = "<group>"; };
 		6868C921150BA192003DAAF2 /* SHFXRegularPolygonPlugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SHFXRegularPolygonPlugin.cpp; path = Source/SHFXRegularPolygonPlugin.cpp; sourceTree = "<group>"; };
 		6868C922150BA192003DAAF2 /* SHFXRegularPolygonPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHFXRegularPolygonPlugin.h; path = Source/SHFXRegularPolygonPlugin.h; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ED99A772D7C79E700F277EA /* GameController.framework in Frameworks */,
 				2ED05924244D0A9800DBC697 /* OpenGL.framework in Frameworks */,
 				2ED05922244D0A9200DBC697 /* Cocoa.framework in Frameworks */,
 				DAA52DCD15CA7E5F00AC7CA4 /* CoreFoundation.framework in Frameworks */,
@@ -97,6 +100,7 @@
 		2E89E0BE244BA6C10001C61D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2ED99A762D7C79E700F277EA /* GameController.framework */,
 				2ED05923244D0A9800DBC697 /* OpenGL.framework */,
 				2ED05921244D0A9200DBC697 /* Cocoa.framework */,
 			);
@@ -244,7 +248,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "python ../../tools/pipl/create_pipl.py -input '[{\"name\":\"SHFXRegularPolygon\"}]' \n";
+			shellScript = "python3 ../../tools/pipl/create_pipl.py -input '[{\"name\":\"SHFXRegularPolygon\"}]' \n";
 		};
 		2E1FD08223C9F7BF0064731F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -472,6 +476,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib/mac/$(AI_CONFIGURATION)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-L./lib/mac/$(AI_CONFIGURATION)",
@@ -502,6 +507,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib/mac/$(AI_CONFIGURATION)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-L./lib/mac/$(AI_CONFIGURATION)",
