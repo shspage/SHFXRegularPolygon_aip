@@ -6,8 +6,6 @@ __SHFXRegularPolygon.aip__ は、Adobe Illustrator  2025 (mac/win) プラグイ�
 
 機能としては単純ですが、[Dear ImGui](https://github.com/ocornut/imgui) で LiveEffectプラグインの設定ダイアログを作成する例として公開しています。
 
-このブランチ（xcode12_ai2022_arm64）は macOS (Apple Silicon) 用です。  
-windows版の関連ファイルは master ブランチから変更していません。
 
 ## 使い方
 
@@ -26,9 +24,7 @@ https://twitter.com/shspage/status/1256437710778036224
 
 ## 動作環境：
 
-Adobe Illustrator 2022 (macOS (Apple Silicon))
-
-<!-- Windows10 (win版) -->
+Adobe Illustrator 2022 (macOS (Apple Silicon) / Windows)
 
 
 ## 開発環境
@@ -37,7 +33,7 @@ Adobe Illustrator 2025 SDK
 Xcode 14.2 / macOS 13.1 sdk / MacOS Ventura  
 MacBook Air (M1)
 
-<!-- Visual Studio 2017 / Windows10 -->
+Visual Studio 2022 / Windows11
 
 
 ## ビルド
