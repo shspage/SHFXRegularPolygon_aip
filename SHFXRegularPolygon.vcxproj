@@ -20,29 +20,29 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C863B0AA-DA5B-444F-9360-4D023C062D31}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>SHFXRegularPolygon</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -219,7 +219,7 @@ python ..\..\tools\pipl\create_pipl.py -input "[{\"name\":\"SHFXRegularPolygon\"
     </Link>
     <PreBuildEvent>
       <Command>echo   performing: python ..\..\tools\pipl\create_pipl.py -input "[{\"name\":\"SHFXRegularPolygon\"}]"
-C:\Python27\python.exe ..\..\tools\pipl\create_pipl.py -input "[{\"name\":\"SHFXRegularPolygon\"}]" </Command>
+C:\Python311\python.exe ..\..\tools\pipl\create_pipl.py -input "[{\"name\":\"SHFXRegularPolygon\"}]" </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -339,7 +339,7 @@ python ..\..\tools\pipl\create_pipl.py -input "[{\"name\":\"SHFXRegularPolygon\"
     </Link>
     <PreBuildEvent>
       <Command>echo   performing: python ..\..\tools\pipl\create_pipl.py -input "[{\"name\":\"SHFXRegularPolygon\"}]"
-C:\Python27\python.exe ..\..\tools\pipl\create_pipl.py -input "[{\"name\":\"SHFXRegularPolygon\"}]" </Command>
+C:\Python311\python.exe ..\..\tools\pipl\create_pipl.py -input "[{\"name\":\"SHFXRegularPolygon\"}]" </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

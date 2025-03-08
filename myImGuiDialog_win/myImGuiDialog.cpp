@@ -2,7 +2,7 @@
 // Dear ImGui のサンプルコード (example_win32_directx9) をベースにしています。
 // "#" を付したコメントは私のもので、それ以外の英語のはサンプルコードのものです。
 
-// # Dear ImGui : Copyright (c) 2014-2020 Omar Cornut
+// # Dear ImGui : Copyright (c) 2014-2025 Omar Cornut
 // # Licensed under the MIT License
 // # https://github.com/ocornut/imgui
 
@@ -22,68 +22,72 @@ extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg
 namespace myImGuiDialog
 {
     // Data
-    static LPDIRECT3D9              g_pD3D = NULL;
-    static LPDIRECT3DDEVICE9        g_pd3dDevice = NULL;
+    static LPDIRECT3D9              g_pD3D = nullptr;
+    static LPDIRECT3DDEVICE9        g_pd3dDevice = nullptr;
+    static bool                     g_DeviceLost = false;
+    static UINT                     g_ResizeWidth = 0, g_ResizeHeight = 0;
     static D3DPRESENT_PARAMETERS    g_d3dpp = {};
 
-    static HWND g_hwndParent = NULL;
+    static HWND g_parentHwnd = nullptr;
 
     // Forward declarations of helper functions
     bool CreateDeviceD3D(HWND hWnd);
     void CleanupDeviceD3D();
     void ResetDevice();
     LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
-    void EnableParentAndChildren(BOOL enable);
 
-    int runModal(HWND hwnd, MyParms* parms, std::function<void(void)> callbackFunc)
+    void DisableIllustratorWindows(HWND parentHwnd, HWND dialogHwnd);
+    void EnableIllustratorWindows(HWND parentHwnd);
+
+    int runModal(HWND parentHwnd, MyParms* parms, std::function<void(void)> callbackFunc)
     {
         int dialogResult = 0;
 
         // # initialize
-        HWND hwndDialog;
-        WNDCLASSEX wc;
+        HWND hwnd = nullptr;
+        WNDCLASSEXW wc;
         {
-            g_hwndParent = hwnd;
+            g_parentHwnd = parentHwnd;
+
             // Create application window
             WCHAR titlew[64];
             size_t wLen = 0;
             errno_t err = 0;
             err = mbstowcs_s(&wLen, titlew, 64, kMyDialogTitle, _TRUNCATE);
 
-            wc = { sizeof(WNDCLASSEX), CS_OWNDC, WndProc, 0L, 0L, GetModuleHandle(NULL),
-                NULL, NULL, NULL, NULL, titlew, NULL };
-            ::RegisterClassEx(&wc);
+            wc = { sizeof(wc), CS_CLASSDC, WndProc, 0L, 0L, GetModuleHandle(nullptr),
+                nullptr, nullptr, nullptr, nullptr, titlew, nullptr };
+            ::RegisterClassExW(&wc);
 
-            int windowWidth = kMyDialogWidth;
-            int windowHeight = kMyDialogHeight;
+            int windowWidth = (int)kMyDialogWidth;
+            int windowHeight = (int)kMyDialogHeight;
 
             int windowX = 0;
             int windowY = 0;
             RECT rect;
-            if (g_hwndParent != NULL) {
-                GetClientRect(g_hwndParent, &rect);
+            if (parentHwnd != NULL) {
+                GetClientRect(parentHwnd, &rect);
                 windowX = max(0, ((rect.left + rect.right) - windowWidth) / 2);
                 windowY = max(0, ((rect.top + rect.bottom) - windowHeight) / 2);
             }
             
-            hwndDialog = ::CreateWindow(wc.lpszClassName, titlew,
-                WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU,
-                windowX, windowY, windowWidth, windowHeight, g_hwndParent, NULL, wc.hInstance, NULL);
-            if (hwndDialog == NULL) return 0;
+            hwnd = ::CreateWindowW(wc.lpszClassName, titlew, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU,
+                windowX, windowY, windowWidth, windowHeight, parentHwnd, nullptr, wc.hInstance, nullptr);
+            if (hwnd == nullptr) return 1;
 
             // Initialize Direct3D
-            if (!CreateDeviceD3D(hwndDialog))
+            if (!CreateDeviceD3D(hwnd))
             {
                 CleanupDeviceD3D();
                 ::UnregisterClass(wc.lpszClassName, wc.hInstance);
-                return 0;
+                return 1;
             }
 
             // Show the window
-            ::ShowWindow(hwndDialog, SW_SHOW);
-            ::UpdateWindow(hwndDialog);
+            ::ShowWindow(hwnd, SW_SHOW);
+            ::UpdateWindow(hwnd);
 
-            if (g_hwndParent != NULL)EnableParentAndChildren(FALSE);
+            DisableIllustratorWindows(parentHwnd, hwnd);  // # ダイアログ以外を無効化
 
             // Setup Dear ImGui context
             IMGUI_CHECKVERSION();
@@ -100,23 +104,25 @@ namespace myImGuiDialog
             style->Colors[ImGuiCol_FrameBg] = ImVec4(0.5f, 0.5f, 0.5f, 0.5f);
 
             // Setup Platform/Renderer bindings
-            ImGui_ImplWin32_Init(hwndDialog);
+            ImGui_ImplWin32_Init(hwnd);
             ImGui_ImplDX9_Init(g_pd3dDevice);
 
             // Load Fonts
+            // Load Fonts
             // - If no fonts are loaded, dear imgui will use the default font. You can also load multiple fonts and use ImGui::PushFont()/PopFont() to select them.
             // - AddFontFromFileTTF() will return the ImFont* so you can store it if you need to select the font among multiple.
-            // - If the file cannot be loaded, the function will return NULL. Please handle those errors in your application (e.g. use an assertion, or display an error and quit).
+            // - If the file cannot be loaded, the function will return a nullptr. Please handle those errors in your application (e.g. use an assertion, or display an error and quit).
             // - The fonts will be rasterized at a given size (w/ oversampling) and stored into a texture when calling ImFontAtlas::Build()/GetTexDataAsXXXX(), which ImGui_ImplXXXX_NewFrame below will call.
-            // - Read 'docs/FONTS.txt' for more instructions and details.
+            // - Use '#define IMGUI_ENABLE_FREETYPE' in your imconfig file to use Freetype for higher quality font rendering.
+            // - Read 'docs/FONTS.md' for more instructions and details.
             // - Remember that in C/C++ if you want to include a backslash \ in a string literal you need to write a double backslash \\ !
             //io.Fonts->AddFontDefault();
+            //io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\segoeui.ttf", 18.0f);
+            //io.Fonts->AddFontFromFileTTF("../../misc/fonts/DroidSans.ttf", 16.0f);
             //io.Fonts->AddFontFromFileTTF("../../misc/fonts/Roboto-Medium.ttf", 16.0f);
             //io.Fonts->AddFontFromFileTTF("../../misc/fonts/Cousine-Regular.ttf", 15.0f);
-            //io.Fonts->AddFontFromFileTTF("../../misc/fonts/DroidSans.ttf", 16.0f);
-            //io.Fonts->AddFontFromFileTTF("../../misc/fonts/ProggyTiny.ttf", 10.0f);
-            //ImFont* font = io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\ArialUni.ttf", 18.0f, NULL, io.Fonts->GetGlyphRangesJapanese());
-            //IM_ASSERT(font != NULL);
+            //ImFont* font = io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\ArialUni.ttf", 18.0f, nullptr, io.Fonts->GetGlyphRangesJapanese());
+            //IM_ASSERT(font != nullptr);
         }
 
         // # 通常のダイアログっぽく見せるためのフラグ。
@@ -142,43 +148,39 @@ namespace myImGuiDialog
         callbackFunc();  // # 初回のプレビューを表示
 
         // Main loop
-        MSG msg;
-        ZeroMemory(&msg, sizeof(msg));
-        while (msg.message != WM_QUIT)
-        {
+        bool done = false;
+        while (!done) {
             // Poll and handle messages (inputs, window resize, etc.)
-            // You can read the io.WantCaptureMouse, io.WantCaptureKeyboard flags to tell if dear imgui wants to use your inputs.
-            // - When io.WantCaptureMouse is true, do not dispatch mouse input data to your main application.
-            // - When io.WantCaptureKeyboard is true, do not dispatch keyboard input data to your main application.
-            // Generally you may always pass all inputs to dear imgui, and hide them from your application based on those two flags.
-            BOOL bEat;
-            if (::PeekMessage(&msg, NULL, 0U, 0U, PM_REMOVE))
+            // See the WndProc() function below for our to dispatch events to the Win32 backend.
+            MSG msg;
+            while (::PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
+                ::TranslateMessage(&msg);
+                ::DispatchMessage(&msg);
+                if (msg.message == WM_QUIT) done = true;
+            }
+            if (done) break;
+
+            // Handle lost D3D9 device
+            if (g_DeviceLost)
             {
-                // # ダイアログをモーダルな挙動にするための処理。
-                // # 以下ではアプリケーションのウィンドウ領域内で、ダイアログの外側でのマウス操作を無視している。
-                // # まだパレットの前後関係変更は可能で、ポインタ位置に応じてカーソル形状が変わったりもするが、
-                // # それ以上の操作はできない。書類ウィンドウの移動などを制限するため、別途 EnableParentAndChildren
-                // # を併用している。
-                // ref: https://stackoverflow.com/questions/734674/creating-a-win32-modal-window-with-createwindow
-                bEat = FALSE;
-                if (msg.message >= WM_MOUSEFIRST && msg.message <= WM_MOUSELAST)
+                HRESULT hr = g_pd3dDevice->TestCooperativeLevel();
+                if (hr == D3DERR_DEVICELOST)
                 {
-                    RECT rect;
-                    GetWindowRect(hwndDialog, &rect);
-                    if (!::PtInRect(&rect, msg.pt)) {
-                        if (msg.message == WM_LBUTTONDOWN || msg.message == WM_RBUTTONDOWN
-                            || msg.message == WM_MBUTTONDOWN) {
-                            MessageBeep(MB_ICONASTERISK);
-                        }
-                        bEat = TRUE;
-                    }
+                    ::Sleep(10);
+                    continue;
                 }
-                if (!bEat)
-                {
-                    ::TranslateMessage(&msg);
-                    ::DispatchMessage(&msg);
-                }
-                continue;
+                if (hr == D3DERR_DEVICENOTRESET)
+                    ResetDevice();
+                g_DeviceLost = false;
+            }
+
+            // Handle window resize (we don't resize directly in the WM_SIZE handler)
+            if (g_ResizeWidth != 0 && g_ResizeHeight != 0)
+            {
+                g_d3dpp.BackBufferWidth = g_ResizeWidth;
+                g_d3dpp.BackBufferHeight = g_ResizeHeight;
+                g_ResizeWidth = g_ResizeHeight = 0;
+                ResetDevice();
             }
 
             // Start the Dear ImGui frame
@@ -235,52 +237,67 @@ namespace myImGuiDialog
             g_pd3dDevice->SetRenderState(D3DRS_ZENABLE, FALSE);
             g_pd3dDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
             g_pd3dDevice->SetRenderState(D3DRS_SCISSORTESTENABLE, FALSE);
-            D3DCOLOR clear_col_dx = D3DCOLOR_RGBA((int)(clear_color.x*255.0f), (int)(clear_color.y*255.0f), (int)(clear_color.z*255.0f), (int)(clear_color.w*255.0f));
-            g_pd3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, clear_col_dx, 1.0f, 0);
+            D3DCOLOR clear_col_dx = D3DCOLOR_RGBA((int)(clear_color.x * clear_color.w * 255.0f), (int)(clear_color.y * clear_color.w * 255.0f), (int)(clear_color.z * clear_color.w * 255.0f), (int)(clear_color.w * 255.0f));
+            g_pd3dDevice->Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, clear_col_dx, 1.0f, 0);
             if (g_pd3dDevice->BeginScene() >= 0)
             {
                 ImGui::Render();
                 ImGui_ImplDX9_RenderDrawData(ImGui::GetDrawData());
                 g_pd3dDevice->EndScene();
             }
-            HRESULT result = g_pd3dDevice->Present(NULL, NULL, NULL, NULL);
-
-            // Handle loss of D3D9 device
-            if (result == D3DERR_DEVICELOST && g_pd3dDevice->TestCooperativeLevel() == D3DERR_DEVICENOTRESET)
-                ResetDevice();
+            HRESULT result = g_pd3dDevice->Present(nullptr, nullptr, nullptr, nullptr);
+            if (result == D3DERR_DEVICELOST)
+                g_DeviceLost = true;
 
             if (dialogResult != 0) {
-                PostMessage(hwndDialog, WM_CLOSE, 0, 0);
+                PostMessage(hwnd, WM_CLOSE, 0, 0);
             }
         }
 
         // Cleanup
-        {
-            ImGui_ImplDX9_Shutdown();
-            ImGui_ImplWin32_Shutdown();
-            ImGui::DestroyContext();
+        ImGui_ImplDX9_Shutdown();
+        ImGui_ImplWin32_Shutdown();
+        ImGui::DestroyContext();
 
-            CleanupDeviceD3D();
-            ::DestroyWindow(hwndDialog);
-            ::UnregisterClass(wc.lpszClassName, wc.hInstance);
-            hwndDialog = NULL;
-        }
+        CleanupDeviceD3D();
+        ::DestroyWindow(hwnd);
+        ::UnregisterClassW(wc.lpszClassName, wc.hInstance);
+        hwnd = nullptr;
 
         return dialogResult;
+    }
+
+    void DisableIllustratorWindows(HWND parentHwnd, HWND dialogHwnd) {
+        DWORD threadId = GetWindowThreadProcessId(parentHwnd, nullptr);
+        EnumThreadWindows(threadId, [](HWND hwnd, LPARAM lParam) -> BOOL {
+            HWND dialogHwnd = (HWND)lParam;
+            if (hwnd != dialogHwnd) { // ダイアログウィンドウは無効化しない
+                EnableWindow(hwnd, FALSE);
+            }
+            return TRUE;
+            }, (LPARAM)dialogHwnd);
+    }
+
+    void EnableIllustratorWindows(HWND parentHwnd) {
+        DWORD threadId = GetWindowThreadProcessId(parentHwnd, nullptr);
+        EnumThreadWindows(threadId, [](HWND hwnd, LPARAM lParam) -> BOOL {
+            EnableWindow(hwnd, TRUE);
+            return TRUE;
+            }, 0);
     }
 
     // Helper functions
 
     bool CreateDeviceD3D(HWND hWnd)
     {
-        if ((g_pD3D = Direct3DCreate9(D3D_SDK_VERSION)) == NULL)
+        if ((g_pD3D = Direct3DCreate9(D3D_SDK_VERSION)) == nullptr)
             return false;
 
         // Create the D3DDevice
         ZeroMemory(&g_d3dpp, sizeof(g_d3dpp));
         g_d3dpp.Windowed = TRUE;
         g_d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
-        g_d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;
+        g_d3dpp.BackBufferFormat = D3DFMT_UNKNOWN; // Need to use an explicit format with alpha if needing per-pixel alpha composition.
         g_d3dpp.EnableAutoDepthStencil = TRUE;
         g_d3dpp.AutoDepthStencilFormat = D3DFMT_D16;
         g_d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_ONE;           // Present with vsync
@@ -293,8 +310,8 @@ namespace myImGuiDialog
 
     void CleanupDeviceD3D()
     {
-        if (g_pd3dDevice) { g_pd3dDevice->Release(); g_pd3dDevice = NULL; }
-        if (g_pD3D) { g_pD3D->Release(); g_pD3D = NULL; }
+        if (g_pd3dDevice) { g_pd3dDevice->Release(); g_pd3dDevice = nullptr; }
+        if (g_pD3D) { g_pD3D->Release(); g_pD3D = nullptr; }
     }
 
     void ResetDevice()
@@ -308,6 +325,10 @@ namespace myImGuiDialog
 
 
     // Win32 message handler
+    // You can read the io.WantCaptureMouse, io.WantCaptureKeyboard flags to tell if dear imgui wants to use your inputs.
+    // - When io.WantCaptureMouse is true, do not dispatch mouse input data to your main application, or clear/overwrite your copy of the mouse data.
+    // - When io.WantCaptureKeyboard is true, do not dispatch keyboard input data to your main application, or clear/overwrite your copy of the keyboard data.
+    // Generally you may always pass all inputs to dear imgui, and hide them from your application based on those two flags.
     LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     {
         if (ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam))
@@ -316,57 +337,24 @@ namespace myImGuiDialog
         switch (msg)
         {
         case WM_SIZE:
-            if (g_pd3dDevice != NULL && wParam != SIZE_MINIMIZED)
-            {
-                g_d3dpp.BackBufferWidth = LOWORD(lParam);
-                g_d3dpp.BackBufferHeight = HIWORD(lParam);
-                ResetDevice();
-            }
+            if (wParam == SIZE_MINIMIZED)
+                return 0;
+            g_ResizeWidth = (UINT)LOWORD(lParam); // Queue resize
+            g_ResizeHeight = (UINT)HIWORD(lParam);
             return 0;
         case WM_SYSCOMMAND:
             if ((wParam & 0xfff0) == SC_KEYMENU) // Disable ALT application menu
                 return 0;
             break;
         case WM_CLOSE:
-            // # 親ウィンドウを有効化するための追加処理。
-            // # ダイアログが閉じる前に行う必要がある。
-            EnableParentAndChildren(TRUE);
-            g_hwndParent = NULL;
+            EnableIllustratorWindows(g_parentHwnd); // Illustratorのウィンドウを再度有効化
+            ::SetForegroundWindow(g_parentHwnd);
+            g_parentHwnd = nullptr;
             break;
         case WM_DESTROY:
             ::PostQuitMessage(0);
             return 0;
         }
-        return ::DefWindowProc(hWnd, msg, wParam, lParam);
-    }
-
-    BOOL CALLBACK EnumChildProc(HWND hwnd, LPARAM lp)
-    {
-        if (IsWindowVisible(hwnd)) {
-            EnableWindow(hwnd, (BOOL)lp);
-        }
-        return TRUE;
-    }
-
-    void EnableParentAndChildren(BOOL enable)
-    {
-        if (g_hwndParent != NULL) {
-            HWND tmpHwnd = GetWindow(g_hwndParent, GW_HWNDFIRST);
-            while (tmpHwnd != 0) {
-                if (IsWindowVisible(tmpHwnd)) {
-                    {
-                        HWND parentHwnd = GetParent(tmpHwnd);
-                        if (parentHwnd == g_hwndParent) {
-                            EnableWindow(tmpHwnd, enable);
-                        }
-                    }
-                }
-                tmpHwnd = GetWindow(tmpHwnd, GW_HWNDNEXT);
-            }
-            // # 子ウィンドウに適用する処理。効果が確認できないのでコメントアウトしている。
-            //EnumChildWindows(g_hwndParent, EnumChildProc, (LPARAM)enable);
-
-            EnableWindow(g_hwndParent, enable);
-        }
+        return ::DefWindowProcW(hWnd, msg, wParam, lParam);
     }
 }

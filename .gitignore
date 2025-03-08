@@ -13,11 +13,13 @@ plugin.pipl
 
 *.a
 
+# ImGui ----
+imgui.ini
+
 # Xcode ----
 *.build/
 XCBuildData/
 xcuserdata/
-build/
 
 # windows ----
 Thumbs.db
@@ -26,6 +28,11 @@ ehthumbs.db
 ehthumbs_vista.db
 [Dd]esktop.ini
 *.lnk
+*.pdb
+.vs/
+Debug/
+x64/
+lib/win/
 
 # mac ----
 .DS_Store
